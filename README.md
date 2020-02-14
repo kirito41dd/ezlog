@@ -52,7 +52,7 @@ Output:
 ```
 
 ## go doc -all
-```text
+```go
 package ezlog // import "github.com/zshorz/ezlog"
 
 
