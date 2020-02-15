@@ -1,4 +1,6 @@
 # ezlog
+[![Build Status](https://www.travis-ci.org/zshorz/ezlog.svg?branch=master)](https://www.travis-ci.org/zshorz/ezlog)
+
 A simple log package with log levels.
 
 ## usage
