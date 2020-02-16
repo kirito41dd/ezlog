@@ -6,6 +6,7 @@
 package ezlog
 
 import (
+	"io"
 	"os"
 )
 
@@ -61,6 +62,10 @@ func Fatalf(format string, v ...interface{}) {
 
 
 // get and set
+
+func SetOutput(writer io.Writer) {
+	std.SetOutput(writer)
+}
 
 func Flags() int {
 	return std.Flags()
