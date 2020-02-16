@@ -30,6 +30,7 @@ func Test_logger(t *testing.T) {
 
 func Test_std(t *testing.T) {
 	SetLogLevel(LogAll)
+	SetFlags(Flags()|BitShortFile)
 	Debug("test Debug")
 	Debugf("%s","test Debugf")
 	Info("test Info")

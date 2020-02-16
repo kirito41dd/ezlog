@@ -6,6 +6,7 @@
 package ezlog
 
 import (
+	"fmt"
 	"io"
 	"os"
 )
@@ -13,51 +14,57 @@ import (
 var std = New(os.Stderr, "", BitStdFlag, LogAll)
 
 func Debug(v ...interface{}) {
-	std.Debug(v...)
+	_ = std.Output(2, LogDebug, fmt.Sprintln(v...))
 }
 
 func Debugf(format string, v ...interface{}) {
-	std.Debugf(format, v...)
+	_ = std.Output(2, LogDebug, fmt.Sprintf(format, v...))
 }
 
 func Info(v ...interface{}) {
-	std.Info(v...)
+	_ = std.Output(2, LogInfo, fmt.Sprintln(v...))
 }
 
 func Infof(format string, v ...interface{}) {
-	std.Infof(format, v...)
+	_ = std.Output(2, LogInfo, fmt.Sprintf(format, v...))
 }
 
 func Warn(v ...interface{}) {
-	std.Warn(v...)
+	_ = std.Output(2, LogWarn, fmt.Sprintln(v...))
 }
 
 func Warnf(format string, v ...interface{}) {
-	std.Warnf(format, v...)
+	_ = std.Output(2, LogWarn, fmt.Sprintf(format, v...))
 }
 
 func Error(v ...interface{}) {
-	std.Error(v...)
+	_ = std.Output(2, LogError, fmt.Sprintln(v...))
 }
 
 func Errorf(format string, v ...interface{}) {
-	std.Errorf(format, v...)
+	_ = std.Output(2, LogError, fmt.Sprintf(format, v...))
 }
 
 func Panic(v ...interface{}) {
-	std.Panic(v...)
+	s := fmt.Sprintln(v...)
+	_ = std.Output(2, LogPanic, s)
+	panic(s)
 }
 
 func Panicf(format string, v ...interface{}) {
-	std.Panicf(format, v...)
+	s := fmt.Sprintf(format, v...)
+	_ = std.Output(2, LogPanic, s)
+	panic(s)
 }
 
 func Fatal(v ...interface{}) {
-	std.Fatal(v...)
+	_ = std.Output(2, LogFatal, fmt.Sprintln(v...))
+	os.Exit(1)
 }
 
 func Fatalf(format string, v ...interface{}) {
-	std.Fatalf(format, v...)
+	_ = std.Output(2, LogFatal, fmt.Sprintf(format, v...))
+	os.Exit(1)
 }
 
 
